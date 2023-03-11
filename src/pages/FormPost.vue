@@ -1,13 +1,13 @@
 <template>
   <q-page padding>
-    <q-form @submit="onSubmit" class="row q-col-gutter-sm">
+    <q-form @submit.prevent="onSubmit" class="row q-col-gutter-sm">
       <q-input
         outlined
         v-model="form.name_uz"
         label="Product Name"
         lazy-rules
         class="col-lg-6 col-xs-12"
-        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório']"
+        :rules="[(val) => (val && val.length > 0) || 'Error']"
       />
 
       <q-input
@@ -17,7 +17,7 @@
         type="number"
         lazy-rules
         class="col-lg-6 col-xs-12"
-        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório']"
+        :rules="[(val) => (val && val.length > 0) || 'Error']"
       />
 
       <q-input
@@ -26,7 +26,17 @@
         label="Address"
         lazy-rules
         class="col-lg-6 col-xs-12"
-        :rules="[(val) => (val && val.length > 0) || 'Campo obrigatório']"
+        :rules="[(val) => (val && val.length > 0) || 'Error']"
+      />
+
+      <q-input
+        outlined
+        v-model="form.created_date"
+        label="Address"
+        lazy-rules
+        type="date"
+        class="col-lg-6 col-xs-12"
+        :rules="[(val) => (val && val.length > 0) || 'Error']"
       />
 
       <div class="col-lg-12 col-xs-12">
@@ -67,10 +77,11 @@ export default defineComponent({
     const router = useRouter()
     const route = useRoute()
     const form = ref({
-      product_type_id: '1111',
+      product_type_id: 0,
       name_uz: '',
-      cost: '',
-      address: ''
+      cost: 0,
+      address: '',
+      created_date: ''
     })
 
     onMounted(async () => {
