@@ -32,7 +32,7 @@
       <q-input
         outlined
         v-model="form.created_date"
-        label="Address"
+        label=""
         lazy-rules
         type="date"
         class="col-lg-6 col-xs-12"
@@ -102,13 +102,14 @@ export default defineComponent({
     const onSubmit = async () => {
       try {
         if (form.value.id) {
-          console.log('asdas')
           await update(form.value)
+          console.log('update')
         } else {
           await post(form.value)
+          console.log('post')
         }
         $q.notify({
-          message: 'Post salvo com sucesso!',
+          message: 'Successfully!',
           icon: 'check',
           color: 'positive'
         })
