@@ -11,6 +11,9 @@
         />
       </template>
       <template v-slot:body-cell-actions="props">
+        <q-td :props="props">
+          {{ props.row.name_uz }}
+        </q-td>
         <q-td :props="props" class="q-gutter-sm">
           <q-btn
             icon="edit"

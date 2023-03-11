@@ -103,13 +103,13 @@ export default defineComponent({
       try {
         if (form.value.id) {
           await update(form.value)
-          console.log('update')
+          console.log('post')
         } else {
           await post(form.value)
-          console.log('post')
+          console.log('update')
         }
         $q.notify({
-          message: 'Successfully!',
+          message: 'Post salvo com sucesso!',
           icon: 'check',
           color: 'positive'
         })
